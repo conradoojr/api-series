@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+    nginx:
+        container_name: api_series_nginx
+        image: nginx:latest
+        ports:
+            - 80:80
+        volumes:
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - /var/run/docker.sock:/tmp/docker.sock:ro
+        volumes_from:
+            - php
+        depends_on: [php,redis]
+    php:
+        container_name: api_series_php
+        build: ./docker/php/
+        expose:
+            - 9000
+        volumes:
+            - ./:/var/www/html
+        environment:
+            - VIRTUAL_HOST=api_series.dev
+    redis:
+      image: redis:alpine
+      expose:
+          - 6379
+
+    db:
+        container_name: api_series_db
+        image: mysql:latest
+        expose:
+            - 3306
+        volumes:
+            - ./docker/database_data:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: api_series++
+            MYSQL_DATABASE: api_series
+            MYSQL_USER: puser
+            MYSQL_PASSWORD: ppass
