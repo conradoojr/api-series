@@ -14,3 +14,8 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+$app->get('serie','ApiController@getSerie');
+$app->get('search/{serieName}','ApiController@searchSerie');
+$app->get('seasons/{urlSerie}','ApiController@getSeasons');
+$app->get('episodes/{urlSeason}/{seasonNumber}','ApiController@getEpisodes');

@@ -4,47 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "fcb0481d91b913479f4a33903e28f55b",
+    "content-hash": "fcf7bc425add540f421fcb00c50fc677",
     "packages": [
-        {
-            "name": "conradoojr/thief-links",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/conradoojr/thieflinks.git",
-                "reference": "9edf8f5c0768ab41194ecf2ab192e1f87f2962d6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/conradoojr/thieflinks/zipball/9edf8f5c0768ab41194ecf2ab192e1f87f2962d6",
-                "reference": "9edf8f5c0768ab41194ecf2ab192e1f87f2962d6",
-                "shasum": ""
-            },
-            "require": {
-                "guzzlehttp/guzzle": "^6.2",
-                "php": ">=5.5.9",
-                "symfony/css-selector": "2.8.*|3.0.*",
-                "symfony/dom-crawler": "2.8.*|3.0.*"
-            },
-            "type": "project",
-            "autoload": {
-                "psr-4": {
-                    "Conradoojr\\ThiefLinks\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Conrado Junior",
-                    "email": "conradoojr@outlook.com"
-                }
-            ],
-            "description": "Crawler For WebSites of Series",
-            "time": "2017-05-04 19:29:54"
-        },
         {
             "name": "doctrine/inflector",
             "version": "v1.1.0",
@@ -3969,9 +3930,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "conradoojr/thief-links": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

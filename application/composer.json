@@ -8,7 +8,10 @@
         "php": ">=5.6.4",
         "laravel/lumen-framework": "5.4.*",
         "vlucas/phpdotenv": "~2.2",
-        "conradoojr/thief-links" : "dev-master"
+
+        "symfony/css-selector": "2.8.*|3.0.*",
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "guzzlehttp/guzzle": "^6.2"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -17,6 +20,7 @@
     },
     "autoload": {
         "psr-4": {
+            "Conradoojr\\ThiefLinks\\": "ClasseCrawler/",
             "App\\": "app/"
         }
     },
