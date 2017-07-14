@@ -108,7 +108,7 @@ class SeriesOnlineHd extends BaseCrawler
                     }
 
                     //get link of voiced episode
-                    if ($currentClass == 'ep-dub' && count($cralwer->filter('a')) > 0  && $currentSeasonNumber == $seasonNumber) {
+                    if ($currentClass == 'ep-dub' && count($cralwer->filter('a')) > 0 && $currentSeasonNumber == $seasonNumber) {
                         // $linkWithVoiced = urlencode(trim(explode($this->url->domain, $cralwer->filter('a')->attr('href'))[1]));
                         $linkWithVoiced = trim($cralwer->filter('a')->attr('href'));
                         if ($linkWithVoiced != '') {
@@ -117,7 +117,7 @@ class SeriesOnlineHd extends BaseCrawler
                     }
 
                     //get link of episode with subtitle
-                    if ($currentClass == 'ep-leg' && count($cralwer->filter('a')) > 0  && $currentSeasonNumber == $seasonNumber) {
+                    if ($currentClass == 'ep-leg' && count($cralwer->filter('a')) > 0 && $currentSeasonNumber == $seasonNumber) {
                         // $linkWithSubTitle = urlencode(trim(explode($this->url->domain, $cralwer->filter('a')->attr('href'))[1]));
                         $linkWithSubTitle = trim($cralwer->filter('a')->attr('href'));
                         if ($linkWithSubTitle != '') {
@@ -224,10 +224,9 @@ class SeriesOnlineHd extends BaseCrawler
             throw new RuntimeException('Status code different of 200');
         }
 
-        $playersUnavailable = [
-            'hd',
-            'vidto',
-            'vidzi'
+        $playersAvailable = [
+            'principal',
+            'openload'
         ];
 
         $crawler = new DomCrawler($htmlSite);
@@ -237,7 +236,7 @@ class SeriesOnlineHd extends BaseCrawler
             foreach ($filter as $i => $content) {
                 $cralwer = new DomCrawler($content);
                 $player = strtolower($cralwer->text());
-                if ( in_array($player, $playersUnavailable)) {
+                if ( !in_array($player, $playersAvailable)) {
                     continue;
                 }
 
@@ -245,6 +244,7 @@ class SeriesOnlineHd extends BaseCrawler
                 $result[] = $this->{'getPlayerLink'.$player}($pathAndQuery);
             }
         }
+
         return $result;
     }
 
@@ -272,6 +272,7 @@ class SeriesOnlineHd extends BaseCrawler
         // exit('<br />;)');
         return $filter->attr('src');
     }
+
     private function getPlayerLinkPrincipal($linkEpisode)
     {
         $client = new Client([ 'base_uri' => $this->url->domain ]);
